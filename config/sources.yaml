@@ -1,0 +1,134 @@
+# Review Sources Configuration
+# Define sources, their scrapers, and URLs to scrape
+
+# =============================================================================
+# REVIEW PLATFORMS (Easy - Tier 1)
+# =============================================================================
+
+trustpilot:
+  enabled: true
+  scraper: review_platforms.trustpilot
+  rate_limit_rpm: 15
+  requires_browser: false
+  categories:
+    - name: tech_companies
+      urls:
+        - https://www.trustpilot.com/review/amazon.com
+        - https://www.trustpilot.com/review/ebay.com
+        - https://www.trustpilot.com/review/aliexpress.com
+    - name: services
+      urls:
+        - https://www.trustpilot.com/review/netflix.com
+        - https://www.trustpilot.com/review/spotify.com
+
+sitejabber:
+  enabled: true
+  scraper: review_platforms.sitejabber
+  rate_limit_rpm: 15
+  requires_browser: false
+  categories:
+    - name: shopping
+      urls:
+        - https://www.sitejabber.com/reviews/amazon.com
+        - https://www.sitejabber.com/reviews/wish.com
+
+# =============================================================================
+# ENTERTAINMENT (Easy - Tier 1)
+# =============================================================================
+
+imdb:
+  enabled: true
+  scraper: entertainment.imdb
+  rate_limit_rpm: 20
+  requires_browser: false
+  categories:
+    - name: popular_movies
+      urls:
+        - https://www.imdb.com/title/tt0111161/reviews  # Shawshank
+        - https://www.imdb.com/title/tt0068646/reviews  # Godfather
+        - https://www.imdb.com/title/tt0468569/reviews  # Dark Knight
+
+goodreads:
+  enabled: false  # Requires login for full reviews
+  scraper: entertainment.goodreads
+  rate_limit_rpm: 10
+  requires_browser: true
+  categories:
+    - name: popular_books
+      urls:
+        - https://www.goodreads.com/book/show/5907.The_Hobbit
+
+steam:
+  enabled: true
+  scraper: apps.steam
+  rate_limit_rpm: 20
+  requires_browser: false
+  categories:
+    - name: popular_games
+      urls:
+        - https://store.steampowered.com/app/1245620/ELDEN_RING/
+        - https://store.steampowered.com/app/1091500/Cyberpunk_2077/
+
+# =============================================================================
+# AUTOMOTIVE (Easy - Tier 1)
+# =============================================================================
+
+cars_com:
+  enabled: true
+  scraper: automotive.cars_com
+  rate_limit_rpm: 15
+  requires_browser: false
+  categories:
+    - name: popular_cars
+      urls:
+        - https://www.cars.com/research/toyota-camry/
+        - https://www.cars.com/research/honda-civic/
+
+# =============================================================================
+# APPS (Medium - Tier 2)
+# =============================================================================
+
+google_play:
+  enabled: false  # Requires browser automation
+  scraper: apps.google_play
+  rate_limit_rpm: 10
+  requires_browser: true
+  categories:
+    - name: popular_apps
+      urls:
+        - https://play.google.com/store/apps/details?id=com.whatsapp
+
+# =============================================================================
+# TRAVEL (Medium - Tier 2)
+# =============================================================================
+
+tripadvisor:
+  enabled: false
+  scraper: travel.tripadvisor
+  rate_limit_rpm: 10
+  requires_browser: true
+  categories:
+    - name: hotels
+      urls: []
+
+yelp:
+  enabled: false
+  scraper: travel.yelp
+  rate_limit_rpm: 10
+  requires_browser: true
+  categories:
+    - name: restaurants
+      urls: []
+
+# =============================================================================
+# E-COMMERCE (Hard - Tier 3)
+# =============================================================================
+
+amazon:
+  enabled: false  # Hard to scrape, requires advanced anti-bot
+  scraper: ecommerce.amazon
+  rate_limit_rpm: 5
+  requires_browser: true
+  categories:
+    - name: electronics
+      urls: []
