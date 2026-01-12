@@ -85,7 +85,7 @@ async def _scrape_async(
     
     if not scraper_cls:
         console.print(f"[red]Error:[/red] Unknown source '{source}'")
-        console.print("\nAvailable sources: trustpilot, sitejabber, imdb, steam")
+        console.print("\nAvailable sources: trustpilot, sitejabber, kununu, reclabox, imdb, steam, google_play")
         raise typer.Exit(1)
     
     # Determine URLs to scrape

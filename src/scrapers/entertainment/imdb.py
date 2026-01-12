@@ -45,11 +45,27 @@ class IMDBScraper(BaseScraper):
     async def scrape_reviews(self, url: str, max_reviews: int | None = None) -> list[Review]:
         """Scrape reviews from an IMDB page."""
         try:
+            # Normalize URL - handle title ID input
+            url = self._normalize_url(url)
             html = await self.http_client.get_text(url)
             return self._parse_reviews(html, url)
         except Exception as e:
             logger.error(f"[{self.name}] Error scraping {url}: {e}")
             return []
+
+    def _normalize_url(self, url: str) -> str:
+        """Convert title ID or partial URL to full reviews URL."""
+        # If it's already a full URL
+        if url.startswith("http"):
+            # Make sure it points to reviews page
+            if "/reviews" not in url:
+                title_id = self.extract_title_id(url)
+                if title_id:
+                    return self.build_url(title_id)
+            return url
+        
+        # It's a title ID (e.g., tt0111161)
+        return self.build_url(url)
 
     def _parse_reviews(self, html: str, source_url: str) -> list[Review]:
         """Parse reviews from HTML content."""
@@ -163,6 +179,8 @@ class IMDBScraper(BaseScraper):
         IMDB uses AJAX loading with pagination keys, but we can also
         use the simpler approach of adding sort and filter parameters.
         """
+        # Normalize URL first
+        base_url = self._normalize_url(base_url)
         urls = [base_url]
         max_pages = max_pages or 25
 

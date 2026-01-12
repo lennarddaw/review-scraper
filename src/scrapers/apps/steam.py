@@ -183,8 +183,12 @@ class SteamScraper(BaseScraper):
         Get pagination info.
         
         Note: Steam uses cursor-based pagination via API, so we don't need
-        multiple URLs. This method returns just the base URL.
+        multiple URLs. This method returns just the base URL (or app ID).
         """
+        # Handle both app ID and full URL
+        app_id = self._extract_app_id(base_url)
+        if app_id:
+            return [app_id]  # Return app ID for scrape_reviews to use
         return [base_url]
 
     def _extract_app_id(self, url: str) -> str | None:
