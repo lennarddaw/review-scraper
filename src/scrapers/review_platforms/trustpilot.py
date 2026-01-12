@@ -178,18 +178,22 @@ class TrustpilotScraper(BaseScraper):
             List of page URLs
         """
         urls = [base_url]
+        max_pages = max_pages or 100  # Default to 100 pages max
         
         try:
             # Fetch first page to determine total pages
             html = await self.http_client.get_text(base_url)
             total_pages = self._get_total_pages(html)
             
+            logger.debug(f"[{self.name}] Detected {total_pages} total pages")
+            
             if total_pages <= 1:
-                return urls
+                # Fallback: assume there are more pages and try up to max_pages
+                # Trustpilot will return 404 or empty for non-existent pages
+                total_pages = max_pages
 
             # Limit pages if specified
-            if max_pages:
-                total_pages = min(total_pages, max_pages)
+            total_pages = min(total_pages, max_pages)
 
             # Build pagination URLs
             # Trustpilot uses ?page=N format
@@ -199,7 +203,7 @@ class TrustpilotScraper(BaseScraper):
             for page in range(2, total_pages + 1):
                 urls.append(f"{base}?page={page}")
 
-            logger.info(f"[{self.name}] Found {len(urls)} pages to scrape")
+            logger.info(f"[{self.name}] Will scrape up to {len(urls)} pages")
 
         except Exception as e:
             logger.error(f"[{self.name}] Error getting pagination: {e}")
@@ -210,30 +214,58 @@ class TrustpilotScraper(BaseScraper):
         """Extract total number of pages from HTML."""
         soup = BeautifulSoup(html, "lxml")
         
-        # Look for pagination info
-        # Method 1: Find the last page number link
-        page_links = soup.select("a[name='pagination-button-page']")
-        if page_links:
-            pages = []
-            for link in page_links:
+        # Method 1: Find the last page number link (multiple selector variations)
+        page_selectors = [
+            "a[name='pagination-button-page']",
+            "nav[aria-label*='Pagination'] a",
+            "[class*='pagination'] a[href*='page=']",
+            "a[href*='page=']",
+        ]
+        
+        for selector in page_selectors:
+            page_links = soup.select(selector)
+            if page_links:
+                pages = []
+                for link in page_links:
+                    text = link.get_text(strip=True)
+                    try:
+                        page_num = int(text)
+                        pages.append(page_num)
+                    except ValueError:
+                        # Try to extract from href
+                        href = link.get('href', '')
+                        match = re.search(r'page=(\d+)', href)
+                        if match:
+                            pages.append(int(match.group(1)))
+                if pages:
+                    return max(pages)
+
+        # Method 2: Parse from total reviews count (multiple patterns)
+        # Try to find review count in various formats
+        count_patterns = [
+            r"(\d[\d,.]*)\s*reviews?",
+            r"(\d[\d,.]*)\s*Bewertungen",
+            r"of\s+([\d,]+)",
+            r"von\s+([\d.]+)",
+        ]
+        
+        text = soup.get_text()
+        for pattern in count_patterns:
+            match = re.search(pattern, text, re.IGNORECASE)
+            if match:
+                count_str = match.group(1).replace(",", "").replace(".", "")
                 try:
-                    page_num = int(link.get_text(strip=True))
-                    pages.append(page_num)
+                    total_reviews = int(count_str)
+                    if total_reviews > 20:
+                        # Trustpilot shows 20 reviews per page
+                        return (total_reviews + 19) // 20
                 except ValueError:
                     continue
-            if pages:
-                return max(pages)
 
-        # Method 2: Parse from total reviews count
-        # "Showing reviews X-Y of Z"
-        total_el = soup.select_one(self.SELECTORS["total_reviews"])
-        if total_el:
-            text = total_el.get_text()
-            match = re.search(r"of\s+([\d,]+)", text)
-            if match:
-                total_reviews = int(match.group(1).replace(",", ""))
-                # Trustpilot shows 20 reviews per page
-                return (total_reviews + 19) // 20
+        # Method 3: Look for "next" button - indicates more pages
+        next_button = soup.select_one("a[name='pagination-button-next'], a[rel='next']")
+        if next_button:
+            return 50  # Assume at least 50 pages if there's a next button
 
         # Default to 1 page
         return 1
