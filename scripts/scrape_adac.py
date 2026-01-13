@@ -163,40 +163,181 @@ ADAC_SOURCES = {
     "google_maps": {
         "scraper": "maps.google_maps_serpapi",
         "urls": [
-            # Major cities - Geschäftsstellen
-            "ADAC Geschäftsstelle Berlin",
-            "ADAC Geschäftsstelle Hamburg",
+            # =====================================================
+            # ADAC GESCHÄFTSSTELLEN - Alle Bundesländer & Großstädte
+            # =====================================================
+            
+            # Bayern
             "ADAC Geschäftsstelle München",
-            "ADAC Geschäftsstelle Köln",
-            "ADAC Geschäftsstelle Frankfurt",
-            "ADAC Geschäftsstelle Stuttgart",
-            "ADAC Geschäftsstelle Düsseldorf",
-            "ADAC Geschäftsstelle Hannover",
-            "ADAC Geschäftsstelle Leipzig",
-            "ADAC Geschäftsstelle Dresden",
             "ADAC Geschäftsstelle Nürnberg",
-            "ADAC Geschäftsstelle Bremen",
-            "ADAC Geschäftsstelle Essen",
+            "ADAC Geschäftsstelle Augsburg",
+            "ADAC Geschäftsstelle Regensburg",
+            "ADAC Geschäftsstelle Würzburg",
+            "ADAC Geschäftsstelle Ingolstadt",
+            "ADAC Geschäftsstelle Fürth",
+            "ADAC Geschäftsstelle Erlangen",
+            "ADAC Geschäftsstelle Bayreuth",
+            "ADAC Geschäftsstelle Bamberg",
+            "ADAC Geschäftsstelle Passau",
+            "ADAC Geschäftsstelle Rosenheim",
+            "ADAC Geschäftsstelle Landshut",
+            
+            # Baden-Württemberg
+            "ADAC Geschäftsstelle Stuttgart",
+            "ADAC Geschäftsstelle Mannheim",
+            "ADAC Geschäftsstelle Karlsruhe",
+            "ADAC Geschäftsstelle Freiburg",
+            "ADAC Geschäftsstelle Heidelberg",
+            "ADAC Geschäftsstelle Ulm",
+            "ADAC Geschäftsstelle Heilbronn",
+            "ADAC Geschäftsstelle Pforzheim",
+            "ADAC Geschäftsstelle Reutlingen",
+            "ADAC Geschäftsstelle Tübingen",
+            "ADAC Geschäftsstelle Konstanz",
+            "ADAC Geschäftsstelle Ludwigsburg",
+            "ADAC Geschäftsstelle Esslingen",
+            
+            # Nordrhein-Westfalen
+            "ADAC Geschäftsstelle Köln",
+            "ADAC Geschäftsstelle Düsseldorf",
             "ADAC Geschäftsstelle Dortmund",
-            # Fahrsicherheitszentren
+            "ADAC Geschäftsstelle Essen",
+            "ADAC Geschäftsstelle Duisburg",
+            "ADAC Geschäftsstelle Bochum",
+            "ADAC Geschäftsstelle Wuppertal",
+            "ADAC Geschäftsstelle Bielefeld",
+            "ADAC Geschäftsstelle Bonn",
+            "ADAC Geschäftsstelle Münster",
+            "ADAC Geschäftsstelle Mönchengladbach",
+            "ADAC Geschäftsstelle Gelsenkirchen",
+            "ADAC Geschäftsstelle Aachen",
+            "ADAC Geschäftsstelle Krefeld",
+            "ADAC Geschäftsstelle Oberhausen",
+            "ADAC Geschäftsstelle Hagen",
+            "ADAC Geschäftsstelle Hamm",
+            "ADAC Geschäftsstelle Leverkusen",
+            "ADAC Geschäftsstelle Solingen",
+            "ADAC Geschäftsstelle Neuss",
+            "ADAC Geschäftsstelle Paderborn",
+            "ADAC Geschäftsstelle Siegen",
+            "ADAC Geschäftsstelle Recklinghausen",
+            
+            # Hessen
+            "ADAC Geschäftsstelle Frankfurt",
+            "ADAC Geschäftsstelle Wiesbaden",
+            "ADAC Geschäftsstelle Kassel",
+            "ADAC Geschäftsstelle Darmstadt",
+            "ADAC Geschäftsstelle Offenbach",
+            "ADAC Geschäftsstelle Gießen",
+            "ADAC Geschäftsstelle Marburg",
+            "ADAC Geschäftsstelle Fulda",
+            
+            # Niedersachsen
+            "ADAC Geschäftsstelle Hannover",
+            "ADAC Geschäftsstelle Braunschweig",
+            "ADAC Geschäftsstelle Oldenburg",
+            "ADAC Geschäftsstelle Osnabrück",
+            "ADAC Geschäftsstelle Göttingen",
+            "ADAC Geschäftsstelle Wolfsburg",
+            "ADAC Geschäftsstelle Hildesheim",
+            "ADAC Geschäftsstelle Salzgitter",
+            "ADAC Geschäftsstelle Wilhelmshaven",
+            "ADAC Geschäftsstelle Celle",
+            "ADAC Geschäftsstelle Lüneburg",
+            
+            # Berlin & Brandenburg
+            "ADAC Geschäftsstelle Berlin",
+            "ADAC Geschäftsstelle Berlin Mitte",
+            "ADAC Geschäftsstelle Berlin Charlottenburg",
+            "ADAC Geschäftsstelle Berlin Spandau",
+            "ADAC Geschäftsstelle Potsdam",
+            "ADAC Geschäftsstelle Cottbus",
+            "ADAC Geschäftsstelle Frankfurt Oder",
+            
+            # Sachsen
+            "ADAC Geschäftsstelle Dresden",
+            "ADAC Geschäftsstelle Leipzig",
+            "ADAC Geschäftsstelle Chemnitz",
+            "ADAC Geschäftsstelle Zwickau",
+            "ADAC Geschäftsstelle Plauen",
+            
+            # Hamburg & Schleswig-Holstein
+            "ADAC Geschäftsstelle Hamburg",
+            "ADAC Geschäftsstelle Kiel",
+            "ADAC Geschäftsstelle Lübeck",
+            "ADAC Geschäftsstelle Flensburg",
+            "ADAC Geschäftsstelle Neumünster",
+            
+            # Bremen
+            "ADAC Geschäftsstelle Bremen",
+            "ADAC Geschäftsstelle Bremerhaven",
+            
+            # Rheinland-Pfalz
+            "ADAC Geschäftsstelle Mainz",
+            "ADAC Geschäftsstelle Koblenz",
+            "ADAC Geschäftsstelle Trier",
+            "ADAC Geschäftsstelle Ludwigshafen",
+            "ADAC Geschäftsstelle Kaiserslautern",
+            
+            # Saarland
+            "ADAC Geschäftsstelle Saarbrücken",
+            
+            # Sachsen-Anhalt
+            "ADAC Geschäftsstelle Magdeburg",
+            "ADAC Geschäftsstelle Halle Saale",
+            "ADAC Geschäftsstelle Dessau",
+            
+            # Thüringen
+            "ADAC Geschäftsstelle Erfurt",
+            "ADAC Geschäftsstelle Jena",
+            "ADAC Geschäftsstelle Gera",
+            "ADAC Geschäftsstelle Weimar",
+            
+            # Mecklenburg-Vorpommern
+            "ADAC Geschäftsstelle Rostock",
+            "ADAC Geschäftsstelle Schwerin",
+            "ADAC Geschäftsstelle Stralsund",
+            "ADAC Geschäftsstelle Greifswald",
+            
+            # =====================================================
+            # ADAC FAHRSICHERHEITSZENTREN
+            # =====================================================
+            "ADAC Fahrsicherheitszentrum Berlin Brandenburg",
             "ADAC Fahrsicherheitszentrum Linthe",
             "ADAC Fahrsicherheitszentrum Grevenbroich",
             "ADAC Fahrsicherheitszentrum Augsburg",
-            "ADAC Fahrsicherheitszentrum Hannover",
+            "ADAC Fahrsicherheitszentrum Hannover Laatzen",
             "ADAC Fahrsicherheitszentrum Koblenz",
-            # More cities
-            "ADAC Augsburg",
-            "ADAC Bonn",
-            "ADAC Karlsruhe",
-            "ADAC Mannheim",
-            "ADAC Wiesbaden",
-            "ADAC Münster",
-            "ADAC Freiburg",
-            "ADAC Mainz",
-            "ADAC Regensburg",
-            "ADAC Würzburg",
+            "ADAC Fahrsicherheitszentrum Nohra",
+            "ADAC Fahrsicherheitszentrum Schlüsselfeld",
+            "ADAC Fahrsicherheitszentrum Hockenheim",
+            "ADAC Fahrsicherheitszentrum Nürburgring",
+            "ADAC Fahrsicherheitszentrum Sachsenring",
+            
+            # =====================================================
+            # ADAC PRÜFZENTREN & TECHNIKZENTREN
+            # =====================================================
+            "ADAC Prüfzentrum",
+            "ADAC Technikzentrum Landsberg",
+            "ADAC Testzentrum",
+            
+            # =====================================================
+            # ADAC REISEBÜROS (zusätzlich zu Geschäftsstellen)
+            # =====================================================
+            "ADAC Reisebüro München",
+            "ADAC Reisebüro Berlin",
+            "ADAC Reisebüro Hamburg",
+            "ADAC Reisebüro Frankfurt",
+            "ADAC Reisebüro Köln",
+            "ADAC Reisebüro Stuttgart",
+            
+            # =====================================================
+            # ADAC ZENTRALE
+            # =====================================================
+            "ADAC Zentrale München",
+            "ADAC Hauptsitz München Hansastraße",
         ],
-        "max_per_url": 5000,
+        "max_per_url": 500,  # Get ALL reviews per location
         "category": "local",
     },
 }
@@ -244,36 +385,6 @@ async def scrape_source(source_name: str, config: dict, max_reviews: int | None 
         console.print(f"  ✗ Scraper failed: {e}", style="red")
     
     return reviews
-
-
-async def scrape_all_adac(max_reviews_per_source: int | None = None, categories: list[str] | None = None) -> dict[str, list[Review]]:
-    """Scrape all ADAC sources."""
-    results = {}
-    
-    console.print("\n[bold blue]═══════════════════════════════════════════════════[/bold blue]")
-    console.print("[bold blue]  ADAC COMPREHENSIVE GERMAN FEEDBACK COLLECTOR[/bold blue]")
-    console.print("[bold blue]═══════════════════════════════════════════════════[/bold blue]")
-    console.print(f"\nTarget: [bold]10,000+[/bold] German feedbacks")
-    console.print(f"Categories: {categories or 'ALL'}\n")
-    
-    for source_name, config in ADAC_SOURCES.items():
-        # Filter by category if specified
-        if categories and config.get("category") not in categories:
-            continue
-            
-        category = config.get("category", "other")
-        console.print(f"\n[bold green]► {source_name.upper()}[/bold green] [{category}]")
-        
-        try:
-            reviews = await scrape_source(source_name, config, max_reviews_per_source)
-            results[source_name] = reviews
-            console.print(f"  [bold]Total: {len(reviews)} reviews[/bold]")
-        except Exception as e:
-            logger.error(f"Failed to scrape {source_name}: {e}")
-            console.print(f"  [red]Failed: {e}[/red]")
-            results[source_name] = []
-    
-    return results
 
 
 def save_results(results: dict[str, list[Review]], output_dir: Path) -> dict[str, Path]:
@@ -366,6 +477,7 @@ def print_summary(results: dict[str, list[Review]], paths: dict[str, Path]):
 async def main():
     """Main entry point."""
     import argparse
+    import signal
     
     parser = argparse.ArgumentParser(description="Scrape ADAC reviews from all German sources")
     parser.add_argument("--max-reviews", type=int, default=None,
@@ -381,14 +493,81 @@ async def main():
     
     output_dir = Path(args.output_dir) if args.output_dir else settings.output_dir
     
-    # Run scraping
-    results = await scrape_all_adac(args.max_reviews, args.category)
+    # Store results globally for graceful shutdown
+    results = {}
+    interrupted = False
     
-    # Save results
-    paths = save_results(results, output_dir)
+    def handle_interrupt(signum, frame):
+        nonlocal interrupted
+        if interrupted:
+            console.print("\n[red]Force quit! Saving what we have...[/red]")
+            if results:
+                paths = save_results(results, output_dir)
+                print_summary(results, paths)
+            sys.exit(1)
+        
+        interrupted = True
+        console.print("\n[yellow]⚠ Interrupt received! Finishing current scrape and saving...[/yellow]")
+        console.print("[yellow]  Press Ctrl+C again to force quit[/yellow]")
     
-    # Print summary
-    print_summary(results, paths)
+    # Register signal handler
+    signal.signal(signal.SIGINT, handle_interrupt)
+    
+    try:
+        # Run scraping with interrupt check
+        results = await scrape_all_adac_interruptible(args.max_reviews, args.category, lambda: interrupted)
+    except Exception as e:
+        console.print(f"[red]Error: {e}[/red]")
+    
+    # Save results (even if interrupted)
+    if results:
+        paths = save_results(results, output_dir)
+        print_summary(results, paths)
+        
+        if interrupted:
+            console.print("\n[yellow]⚠ Scraping was interrupted but data was saved![/yellow]")
+    else:
+        console.print("[red]No data collected.[/red]")
+
+
+async def scrape_all_adac_interruptible(
+    max_reviews_per_source: int | None = None, 
+    categories: list[str] | None = None,
+    check_interrupted: callable = None
+) -> dict[str, list[Review]]:
+    """Scrape all ADAC sources with interrupt support."""
+    results = {}
+    
+    console.print("\n[bold blue]═══════════════════════════════════════════════════[/bold blue]")
+    console.print("[bold blue]  ADAC COMPREHENSIVE GERMAN FEEDBACK COLLECTOR[/bold blue]")
+    console.print("[bold blue]═══════════════════════════════════════════════════[/bold blue]")
+    console.print(f"\nTarget: [bold]15,000+[/bold] German feedbacks")
+    console.print(f"Categories: {categories or 'ALL'}")
+    console.print("[dim]Press Ctrl+C to stop and save current progress[/dim]\n")
+    
+    for source_name, config in ADAC_SOURCES.items():
+        # Check if interrupted
+        if check_interrupted and check_interrupted():
+            console.print(f"\n[yellow]Stopping... Skipping remaining sources[/yellow]")
+            break
+        
+        # Filter by category if specified
+        if categories and config.get("category") not in categories:
+            continue
+            
+        category = config.get("category", "other")
+        console.print(f"\n[bold green]► {source_name.upper()}[/bold green] [{category}]")
+        
+        try:
+            reviews = await scrape_source(source_name, config, max_reviews_per_source)
+            results[source_name] = reviews
+            console.print(f"  [bold]Total: {len(reviews)} reviews[/bold]")
+        except Exception as e:
+            logger.error(f"Failed to scrape {source_name}: {e}")
+            console.print(f"  [red]Failed: {e}[/red]")
+            results[source_name] = []
+    
+    return results
 
 
 if __name__ == "__main__":
