@@ -196,7 +196,7 @@ ADAC_SOURCES = {
             "ADAC Regensburg",
             "ADAC Würzburg",
         ],
-        "max_per_url": 50,
+        "max_per_url": 5000,
         "category": "local",
     },
 }
